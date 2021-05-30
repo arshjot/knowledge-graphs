@@ -297,6 +297,9 @@ class KGEModel(nn.Module):
     def ConvE(self, head, relation, tail, b, mode):
         head_shape, relation_shape = head.size(), relation.size()
 
+        head = F.normalize(head, 2, -1)
+        relation = F.normalize(relation, 2, -1)
+
         # if required, repeat embeddings acc to mode
         num_neg = 1
         if mode == 'head-batch':

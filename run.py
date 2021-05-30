@@ -305,7 +305,7 @@ def main(args):
             training_logs.append(log)
 
             if step >= warm_up_steps:
-                current_learning_rate = current_learning_rate / 10
+                current_learning_rate = current_learning_rate / 5
                 logging.info('Change learning_rate to %f at step %d' % (current_learning_rate, step))
                 optimizer = torch.optim.Adam(
                     filter(lambda p: p.requires_grad, kge_model.parameters()),
