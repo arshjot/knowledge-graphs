@@ -1,6 +1,8 @@
 # Link Property Prediction - ogbl-biokg
 This code includes implementation of many KG models with OGB evaluator. It is based on this [repository](https://github.com/DeepGraphLearning/KnowledgeGraphEmbedding).
 
+Authors: Arshjot Singh Khehra and Srihari Sridharan
+
 The repository contains working implementation for the following models:
 - TransE (same as reference repository)
 - DistMult (same as reference repository)
