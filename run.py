@@ -215,7 +215,11 @@ def main(args):
         double_relation_embedding=args.double_relation_embedding,
         evaluator=evaluator
     )
-    
+
+    def count_parameters(model):
+        return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+    print(f'Number of parameters = {count_parameters(kge_model)}')
     logging.info('Model Parameter Configuration:')
     for name, param in kge_model.named_parameters():
         logging.info('Parameter %s: %s, require_grad = %s' % (name, str(param.size()), str(param.requires_grad)))
@@ -226,7 +230,7 @@ def main(args):
     if args.init_checkpoint:
         # Restore model from checkpoint directory
         logging.info('Loading checkpoint %s...' % args.init_checkpoint)
-        checkpoint = torch.load(os.path.join(args.init_checkpoint, 'checkpoint'))
+        checkpoint = torch.load(os.path.join(args.init_checkpoint, 'checkpoint'),  map_location=torch.device('cpu'))
         entity_dict = checkpoint['entity_dict']
 
     if args.do_train:

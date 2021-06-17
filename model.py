@@ -120,10 +120,10 @@ class KGEModel(nn.Module):
 
         if model_name == 'NormConvKB':
             self.nfmap = 12
-            self.conv1_bn = nn.BatchNorm2d(1)
+            # self.conv1_bn = nn.BatchNorm2d(1)
             self.conv_layer = nn.Conv2d(1, self.nfmap, (1, 3))  # kernel size x 3
-            self.conv2_bn = nn.BatchNorm2d(self.nfmap)
-            self.conv2_lrn = nn.LocalResponseNorm(2)
+            # self.conv2_bn = nn.BatchNorm2d(self.nfmap)
+            # self.conv2_lrn = nn.LocalResponseNorm(2)
             self.dropout = nn.Dropout(0.0)
             self.non_linearity = nn.ReLU()  # you should also tune with torch.tanh() or torch.nn.Tanh()
             self.fc_layer = nn.Linear(self.nfmap * self.entity_dim, 1, bias=False)
